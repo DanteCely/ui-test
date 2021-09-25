@@ -1,0 +1,11 @@
+export { default as bgPeople2xPng } from './bg-people.@2x.png';
+export { default as bgPeoplePng } from './bg-people.png';
+export { default as closeSvg } from './close.svg';
+export { default as facebookSvg } from './facebook.svg';
+export { default as hamburgerSvg } from './hamburger.svg';
+export { default as popeFrancis2xPng } from './pope-francis.@2x.png';
+export { default as popeFrancisPng } from './pope-francis.png';
+export { default as searchSvg } from './search.svg';
+export { default as thumbsDownSvg } from './thumbs-down.svg';
+export { default as twitterSvg } from './twitter.svg';
+export { default as wikipediaSvg } from './wikipedia.svg';
