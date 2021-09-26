@@ -8,6 +8,7 @@ module.exports = function override(config) {
     '@services': 'src/services',
     '@i18n': 'src/i18n',
     '@routes': 'src/routes',
+    '@data': 'src/data',
   })(config);
 
   return config;
