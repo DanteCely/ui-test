@@ -1,0 +1,11 @@
+.caret-image {
+  width: 10.5px;
+  &--up,
+  &--down {
+    transition: 0.3s;
+  }
+
+  &--down {
+    transform: rotate(-180deg);
+  }
+}

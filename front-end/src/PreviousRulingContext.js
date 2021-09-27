@@ -6,8 +6,7 @@ const { GET_DATA } = actionTypes;
 export const PreviousRulingContext = createContext(undefined);
 
 const PreviousRulingProvider = ({ children }) => {
-  const [data, dispatch] = useReducer(votesReducer, initState);
-  const { characters, votes } = useCallback(() => data, [data]);
+  const [{ characters, votes }, dispatch] = useReducer(votesReducer, initState);
 
   useEffect(() => {
     dispatch({ type: GET_DATA, payload: { dispatch } });

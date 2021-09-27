@@ -15,5 +15,4 @@ export const ThumbImg = (props) => {
 
 ThumbImg.prototype = {
   isUp: PropTypes.bool,
-  className: PropTypes.string,
 };

@@ -1,0 +1,57 @@
+@import '@assets/styles/colors';
+@import '@assets/styles/fonts';
+
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dropdown-menu {
+  font-size: $size-small;
+  height: auto;
+
+  &__title {
+    border: 2px solid $darker-gray;
+    background-color: $white;
+    height: 36px;
+    width: 173px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    span {
+      width: 110px;
+      padding-inline: 10px;
+    }
+  }
+
+  &__items-list {
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    transition: height, 0.5s linear;
+
+    &--open {
+      display: block;
+      transition: height, 0.5s linear;
+    }
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 2px solid $darker-gray;
+      border-left: 2px solid $darker-gray;
+      border-bottom: 2px solid $darker-gray;
+      background-color: $white;
+      width: 169px;
+      height: 30px;
+
+      &:hover {
+        background-color: $white-hover;
+      }
+    }
+  }
+}

@@ -17,7 +17,6 @@ export const BallotBox = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const payload = { revert: false, add: selectedOption, characterId, dispatch };
 
     setVoteById(false, selectedOption, characterId).then((votes) => {
       dispatch({ type: 'SET_DATA', payload: { votes } });
