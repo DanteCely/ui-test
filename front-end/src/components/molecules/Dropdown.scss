@@ -14,16 +14,17 @@
   &__title {
     border: 2px solid $darker-gray;
     background-color: $white;
-    height: 36px;
-    width: 173px;
+    height: 2.25rem;
+    width: 10.813rem;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    font-size: $size-small;
 
     span {
-      width: 110px;
-      padding-inline: 10px;
+      width: 6.875rem;
+      padding-inline: 0.625rem;
     }
   }
 
@@ -46,11 +47,20 @@
       border-left: 2px solid $darker-gray;
       border-bottom: 2px solid $darker-gray;
       background-color: $white;
-      width: 169px;
-      height: 30px;
+      width: 10.563rem;
+      height: 1.875rem;
 
       &:hover {
         background-color: $white-hover;
+      }
+
+      > button {
+        width: inherit;
+        height: inherit;
+        border: none;
+        background-color: inherit;
+        cursor: inherit;
+        font-size: inherit;
       }
     }
   }

@@ -22,7 +22,10 @@ export const Dropdown = (props) => {
     id,
     ariaLabel: `${title} dropdown`,
     onClick: () => setIsOpen((open) => !open),
-    onBlur: () => setIsOpen(false),
+    onBlur: (event) => {
+      setIsOpen(false);
+      event.relatedTarget?.click();
+    },
   };
 
   return (
@@ -31,7 +34,7 @@ export const Dropdown = (props) => {
         <span>{title}</span>
         <CaretImg isUp={isOpen} />
       </Button>
-      <ul className={setClassNameOpen('dropdown-menu__items-list')}>
+      <ul className={setClassNameOpen('dropdown-menu__items-list')} aria-labelledby={id}>
         {Children.map(arrayChildren, (child, index) => {
           return <li key={index}>{child}</li>;
         })}
@@ -46,7 +49,3 @@ Dropdown.prototype = {
   className: PropTypes.string,
   children: PropTypes.node,
 };
-
-// Dropdown.defaultProps = {
-//   type: 'Dropdown',
-// };

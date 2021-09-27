@@ -1,0 +1,25 @@
+@import '@assets/styles/colors';
+@import '@assets/styles/fonts';
+
+.button-action {
+  height: 2.813rem;
+  width: 8.438rem;
+  font-size: $size-medium;
+  color: $white;
+  border: 1px solid $white;
+  background-color: $darker-background;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $darker-background-hover;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

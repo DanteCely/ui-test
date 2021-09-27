@@ -1,3 +1,6 @@
 {
-  "BALLOT_BOX__VOTE": "Vote Now"
+  "BALLOT_BOX__VOTE": "Vote Now",
+  "DROPDOWN_MENU__ITEM_LIST_VIEW": "List",
+  "DROPDOWN_MENU__ITEM_GRID_VIEW": "Grid",
+  "VOTE_CARD__DESCRIPTION": "Voting card to view character's voting status"
 }
