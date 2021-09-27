@@ -32,18 +32,4 @@
       outline: 2px solid $white;
     }
   }
-
-  &__vote-now {
-    height: 2.813rem;
-    width: 8.438rem;
-    font-size: $size-medium;
-    color: $white;
-    border: 1px solid $white;
-    background-color: $darker-background;
-    cursor: pointer;
-
-    &:hover {
-      background-color: $darker-background-hover;
-    }
-  }
 }

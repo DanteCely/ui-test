@@ -36,7 +36,7 @@ export const BallotBox = (props) => {
 
   const propsVote = {
     type: 'submit',
-    className: 'button-action ballot-box__vote-now',
+    className: 'button-action',
   };
 
   return (

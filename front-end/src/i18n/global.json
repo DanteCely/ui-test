@@ -1,6 +1,9 @@
 {
+  "PREVIOUS_RULING__TITLE": "Previous Ruling",
   "BALLOT_BOX__VOTE": "Vote Now",
   "DROPDOWN_MENU__ITEM_LIST_VIEW": "List",
   "DROPDOWN_MENU__ITEM_GRID_VIEW": "Grid",
-  "VOTE_CARD__DESCRIPTION": "Voting card to view character's voting status"
+  "VOTE_CARD__DESCRIPTION": "Voting card to view character's voting status",
+  "VOTE_CARD__VOTE_AGAIN": "Vote Again",
+  "CHARACTERD_VOTES__DESCRIPTION": "List of  character where you can choice and vote by a character"
 }
