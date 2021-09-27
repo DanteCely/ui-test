@@ -32,7 +32,7 @@ export const GroupingControl = (props) => {
   }, []);
 
   const onValueChange = (event) => {
-    setSelectedOption(event.target.value);
+    setSelectedOption(event.target.value === 'true');
   };
 
   return (

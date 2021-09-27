@@ -1,20 +1,33 @@
-import { setVoteById } from '@services';
+import { getCharacters, getVotes, setVoteById } from '@services';
 
 export const actionTypes = {
-  SET_VOTE_ID: 'SET_VOTE_ID',
+  GET_DATA: 'GET_DATA',
+  SET_DATA: 'SET_DATA',
+};
+
+export const initState = {
+  characters: undefined,
+  votes: undefined,
 };
 
 export const votesReducer = (state, { type, payload }) => {
   switch (type) {
-    case 'SET_VOTE_ID':
-      const { add, characterId } = payload;
-      const updatedVote = setVoteById(add, characterId);
+    case 'GET_DATA': {
+      const { dispatch } = payload;
 
-      const voteIndex = state.findIndex(({ id }) => id === characterId);
-      state[voteIndex] = updatedVote;
+      Promise.all([getCharacters(), getVotes()]).then(([characters, votes]) => {
+        dispatch({ type: 'SET_DATA', payload: { characters, votes } });
+      });
 
-      return { ...state };
-    default:
+      return state;
+    }
+
+    case 'SET_DATA': {
+      return { ...state, ...payload };
+    }
+
+    default: {
       throw new Error();
+    }
   }
 };

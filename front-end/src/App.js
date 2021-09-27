@@ -7,7 +7,7 @@ import PreviousRulingProvider from './PreviousRulingContext';
 const App = () => {
   return (
     <PreviousRulingProvider>
-      <BallotBox characterId={'001'} />
+      <BallotBox characterId={'uevSFw44'} />
     </PreviousRulingProvider>
   );
 };

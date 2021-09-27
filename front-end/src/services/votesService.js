@@ -3,11 +3,11 @@ import votesData from '@data/votes.json';
 const { REACT_APP_DELAY } = process.env;
 
 const checkVotes = () => {
-  let votes = localStorage.getItem('votes');
+  let votes = JSON.parse(localStorage.getItem('votes'));
 
   if (!votes) {
     localStorage.setItem('votes', JSON.stringify(votesData.data));
-    votes = localStorage.getItem('votes');
+    votes = JSON.parse(localStorage.getItem('votes'));
   }
 
   return votes;
@@ -29,7 +29,7 @@ const loadVotes = (voteId) => {
   });
 };
 
-const modifyVote = (add, characterId) => {
+const modifyVote = (revert, add, characterId) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const votes = checkVotes();
@@ -39,15 +39,17 @@ const modifyVote = (add, characterId) => {
       votes[voteIndex].voted = true;
       votes[voteIndex].lastUpdated = new Date().toISOString();
 
+      const doVote = revert ? -1 : 1;
+
       if (add) {
-        votes[voteIndex].poitive += 1;
+        votes[voteIndex].positive += doVote;
       } else {
-        votes[voteIndex].poitive -= 1;
+        votes[voteIndex].negative += doVote;
       }
 
       localStorage.setItem('votes', JSON.stringify(votes));
 
-      resolve(votes[voteIndex]);
+      resolve(votes);
     }, REACT_APP_DELAY);
   });
 };
@@ -64,8 +66,8 @@ export const getVoteById = async (characterId) => {
   return vote;
 };
 
-export const setVoteById = async (add, characterId) => {
-  const vote = await modifyVote(add, characterId);
+export const setVoteById = async (revert, add, characterId) => {
+  const vote = await modifyVote(revert, add, characterId);
 
   return vote;
 };

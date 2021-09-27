@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import i18n from '@i18n';
+import { actionTypes, setVoteById } from '@services';
+import { PreviousRulingContext } from '../../PreviousRulingContext';
 import { GroupingControl, Button, ThumbImg } from '@components/atoms';
 
 import './BallotBox.scss';
 
+const { SET_VOTE_ID } = actionTypes;
 export const BallotBox = (props) => {
   const { characterId, ...propsForm } = props;
   const [selectedOption, setSelectedOption] = useState();
 
+  const { characters, votes, dispatch } = useContext(PreviousRulingContext);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // voteNow(/* userId */ 'asdf-sdfsdf', selectedOption, characterId);
+    const payload = { revert: false, add: selectedOption, characterId, dispatch };
+
+    setVoteById(false, selectedOption, characterId).then((votes) => {
+      dispatch({ type: 'SET_DATA', payload: { votes } });
+    });
   };
 
   const propsRadio = {

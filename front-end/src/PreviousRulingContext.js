@@ -1,16 +1,22 @@
-import React, { createContext, useState, useEffect, useReducer } from 'react';
-import { getCharacters, getVotes, votesReducer } from '@services';
+import React, { createContext, useEffect, useCallback, useReducer } from 'react';
+import { getCharacters, getVotes, initState, votesReducer, actionTypes } from '@services';
+
+const { GET_DATA } = actionTypes;
 
 export const PreviousRulingContext = createContext(undefined);
 
 const PreviousRulingProvider = ({ children }) => {
-  const [characters, setCharacters] = useState(async () => getCharacters());
-  const [votes, dispatchVotes] = useReducer(votesReducer, undefined, getVotes);
+  const [data, dispatch] = useReducer(votesReducer, initState);
+  const { characters, votes } = useCallback(() => data, [data]);
+
+  useEffect(() => {
+    dispatch({ type: GET_DATA, payload: { dispatch } });
+  }, []);
 
   const propsPreviousRuling = {
     characters,
     votes,
-    dispatchVotes,
+    dispatch,
   };
 
   return <PreviousRulingContext.Provider value={propsPreviousRuling}>{children}</PreviousRulingContext.Provider>;

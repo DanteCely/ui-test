@@ -5,11 +5,11 @@ const { REACT_APP_DELAY } = process.env;
 const loadCharacters = (characterId) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      let characters = localStorage.getItem('characters');
+      let characters = JSON.parse(localStorage.getItem('characters'));
 
       if (!characters) {
-        localStorage.setItem('charactes', JSON.stringify(charactersData.data));
-        characters = localStorage.getItem('characters');
+        localStorage.setItem('characters', JSON.stringify(charactersData.data));
+        characters = JSON.parse(localStorage.getItem('characters'));
       }
 
       if (characterId) {
