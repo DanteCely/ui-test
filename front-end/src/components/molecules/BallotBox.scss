@@ -1,0 +1,49 @@
+@import '@assets/styles/colors';
+@import '@assets/styles/fonts';
+
+.ballot-box {
+  display: flex;
+
+  &__options {
+    display: flex;
+    border: none;
+    padding: 0;
+    margin: 0;
+
+    input {
+      display: none;
+    }
+    label {
+      display: flex;
+      cursor: pointer;
+      padding: 0.656rem;
+      margin-right: 0.563rem;
+
+      &[for='approve'] {
+        background-color: $green-positive;
+      }
+
+      &[for='disapprove'] {
+        background-color: $yellow-negative;
+      }
+    }
+
+    input:checked + label {
+      outline: 2px solid $white;
+    }
+  }
+
+  &__vote-now {
+    height: 2.813rem;
+    width: 8.438rem;
+    font-size: $size-medium;
+    color: $white;
+    border: 1px solid $white;
+    background-color: $darker-background;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $darker-background-hover;
+    }
+  }
+}

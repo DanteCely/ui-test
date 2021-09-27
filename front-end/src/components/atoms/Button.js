@@ -2,15 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Button = (props) => {
-  const { children, ...propsButton } = props;
+  const { children, ariaLabel, ...propsButton } = props;
 
-  return <button {...propsButton}>{children}</button>;
+  return (
+    <button aria-label={ariaLabel} {...propsButton}>
+      {children}
+    </button>
+  );
 };
 
 Button.prototype = {
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['button', 'submit']),
   className: PropTypes.string,
   onClick: PropTypes.func,
+  ariaLabel: PropTypes.string,
+  disabled: PropTypes.bool,
   children: PropTypes.node,
 };
 

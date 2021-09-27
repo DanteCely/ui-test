@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React, { useCallback, Children } from 'react';
 import PropTypes from 'prop-types';
 
 import { getVotesPercent } from '@utils';

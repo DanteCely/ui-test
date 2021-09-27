@@ -1,12 +1,12 @@
-import React, { Children } from 'react';
+import React, { useEffect, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 
 const CheckRadio = (props) => {
-  const { children, id, name, value, selectedOption, ...propsCheckRadio } = props;
+  const { children, id, ...propsCheckRadio } = props;
 
   return (
     <>
-      <input type='radio' id={id} name={name} value={value} checked={selectedOption === value} {...propsCheckRadio} />
+      <input type='radio' id={id} {...propsCheckRadio} />
       <label htmlFor={id}>{children}</label>
     </>
   );
@@ -21,17 +21,19 @@ CheckRadio.prototype = {
   children: PropTypes.node,
 };
 
-// const [selectedOption, setSelectedOption] = useState(defaultValue);
-
 export const GroupingControl = (props) => {
-  const { type, name, defaultValue, propsOptions, setSelectedOption, children, ...propsGroupingControl } = props;
+  const { type, name, defaultValue, propsOptions, useSelectedOption, children, ...propsGroupingControl } = props;
   const arrayChildren = Children.toArray(children);
+
+  const [, setSelectedOption] = useSelectedOption;
 
   useEffect(() => {
     setSelectedOption(defaultValue);
   }, []);
 
-  const onValueChange = (event) => setSelectedOption(event.target.value);
+  const onValueChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
 
   return (
     <fieldset {...propsGroupingControl}>
@@ -39,14 +41,15 @@ export const GroupingControl = (props) => {
         const propsCheckRadio = {
           type,
           name,
-          selectedOption,
           onChange: onValueChange,
           ...(propsOptions[index] || {}),
         };
 
-        <CheckRadio key={index} {...propsCheckRadio}>
-          {child}
-        </CheckRadio>;
+        return (
+          <CheckRadio key={index} {...propsCheckRadio}>
+            {child}
+          </CheckRadio>
+        );
       })}
     </fieldset>
   );
@@ -56,7 +59,12 @@ GroupingControl.prototype = {
   type: PropTypes.oneOf(['radio', 'checkbox']),
   name: PropTypes.string,
   defaultValue: PropTypes.any,
-  setSelectedOption: PropTypes.func,
+  useSelectedOption: PropTypes.arrayOf(
+    PropTypes.shape({
+      selectedOption: PropTypes.func,
+      setSelectedOption: PropTypes.func,
+    })
+  ),
   propsOptions: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,

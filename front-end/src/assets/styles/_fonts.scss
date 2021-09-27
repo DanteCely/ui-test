@@ -125,13 +125,13 @@
   font-style: normal;
 }
 
-$size-smaller: 1.2rem;
-$size-small: 1.4rem;
-$size-normal: 1.6rem;
-$size-medium: 1.8rem;
-$size-large: 2.4rem;
-$size-larger: 2.8rem;
-$size-x-large: 4.6rem;
+$size-smaller: 0.75rem; /* 12px */
+$size-small: 0.875; /* 14px */
+$size-normal: 1rem; /* 16px */
+$size-medium: 1.125rem; /* 18px */
+$size-large: 1.5rem; /* 24px */
+$size-larger: 1.75rem; /* 28px */
+$size-x-large: 2.875rem; /* 46px */
 
 $font-primary: 'Roboto', 'Lato', sans-serif;
 
