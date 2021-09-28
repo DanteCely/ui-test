@@ -1,3 +1,4 @@
+@import '@assets/styles/components';
 @import '@assets/styles/colors';
 @import '@assets/styles/fonts';
 
@@ -14,17 +15,24 @@
       display: none;
     }
     label {
-      display: flex;
-      cursor: pointer;
-      padding: 0.656rem;
+      @include thumb-box;
       margin-right: 0.563rem;
+      cursor: pointer;
 
-      &[for='approve'] {
+      &[for*='approve'] {
         background-color: $green-positive;
+
+        &:hover {
+          background-color: $green-positive-hover;
+        }
       }
 
-      &[for='disapprove'] {
+      &[for*='disapprove'] {
         background-color: $yellow-negative;
+
+        &:hover {
+          background-color: $yellow-negative-hover;
+        }
       }
     }
 

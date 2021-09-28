@@ -10,7 +10,7 @@ export const ThumbImg = (props) => {
     return isUp ? 'up' : 'down';
   };
 
-  return <img className={'thumb-image'} src={`img/thumbs-${thumbsDir()}.svg`} alt={`thumbs ${thumbsDir()}`} />;
+  return <img className={`thumb-image`} src={`img/thumbs-${thumbsDir()}.svg`} alt={`thumbs ${thumbsDir()}`} />;
 };
 
 ThumbImg.prototype = {

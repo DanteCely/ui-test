@@ -1,0 +1,37 @@
+@import '@assets/styles/colors';
+@import '@assets/styles/fonts';
+
+@mixin bar-label {
+  display: inherit;
+  align-items: center;
+}
+
+@mixin thumb-center($is-right: false) {
+  > img {
+    @if $is-right {
+      padding: 0 9px 0 28px;
+    } @else {
+      padding: 0 28px 0 9px;
+    }
+  }
+  > span {
+    font-size: 27px;
+  }
+}
+
+.progress-bar {
+  display: flex;
+  height: 54px;
+  &__left-side {
+    background-color: $background-positive;
+    @include bar-label;
+    @include thumb-center($is-right: true);
+  }
+
+  &__right-side {
+    justify-content: flex-end;
+    background-color: $background-negative;
+    @include bar-label;
+    @include thumb-center($is-right: false);
+  }
+}

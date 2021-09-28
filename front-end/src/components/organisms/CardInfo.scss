@@ -1,0 +1,54 @@
+@import '@assets/styles/components';
+@import '@assets/styles/colors';
+@import '@assets/styles/fonts';
+
+.card-info {
+  color: $white;
+  margin: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.0001) 0%,
+    #888888 19.79%,
+    #666666 50%,
+    rgba(51, 51, 51, 0.6) 71.88%
+  );
+
+  &__thumb-img {
+    @include thumb-box;
+
+    &--up {
+      background-color: $green-positive;
+    }
+
+    &--down {
+      background-color: $yellow-negative;
+    }
+  }
+
+  &__content {
+    display: flex;
+
+    > div {
+      &:nth-child(1) {
+        width: 16.188rem;
+      }
+
+      &:nth-child(2) {
+        width: 33.75rem;
+      }
+    }
+  }
+
+  &__name {
+    color: $white;
+    font-size: $size-x-large;
+    line-height: 3.938rem;
+  }
+  &__description {
+    font-size: $size-medium;
+    word-break: break-all;
+    line-height: 22px;
+  }
+  &__last-work-comment {
+  }
+}

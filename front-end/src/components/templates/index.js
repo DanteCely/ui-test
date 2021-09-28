@@ -1,1 +1,1 @@
-export * from './CharactersAndVotes';
+export * from './CharactersGroup';

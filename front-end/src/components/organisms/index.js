@@ -1,1 +1,2 @@
-export * from './VoteCard';
+export * from './VoteSide';
+export * from './CardInfo';

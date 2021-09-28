@@ -1,12 +1,6 @@
 @import '@assets/styles/colors';
 @import '@assets/styles/fonts';
 
-@mixin reset-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 .dropdown-menu {
   font-size: $size-small;
   height: auto;

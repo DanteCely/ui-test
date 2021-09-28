@@ -61,7 +61,7 @@ GroupingControl.prototype = {
   defaultValue: PropTypes.any,
   useSelectedOption: PropTypes.arrayOf(
     PropTypes.shape({
-      selectedOption: PropTypes.func,
+      selectedOption: PropTypes.bool,
       setSelectedOption: PropTypes.func,
     })
   ),

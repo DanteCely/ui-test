@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import i18n from '@i18n';
@@ -8,28 +8,28 @@ import { GroupingControl, Button, ThumbImg } from '@components/atoms';
 
 import './BallotBox.scss';
 
-const { SET_VOTE_ID } = actionTypes;
+const { SET_DATA } = actionTypes;
 export const BallotBox = (props) => {
-  const { characterId, ...propsForm } = props;
-  const [selectedOption, setSelectedOption] = useState();
+  const { characterId, index, useSelectedOption, ...propsForm } = props;
+  const [selectedOption, _] = useSelectedOption;
 
-  const { characters, votes, dispatch } = useContext(PreviousRulingContext);
+  const { dispatch } = useContext(PreviousRulingContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     setVoteById(false, selectedOption, characterId).then((votes) => {
-      dispatch({ type: 'SET_DATA', payload: { votes } });
+      dispatch({ type: SET_DATA, payload: { votes } });
     });
   };
 
   const propsRadio = {
-    name: 'vote-selection',
+    name: `voteSelection${index}`,
     defaultValue: undefined,
-    useSelectedOption: [selectedOption, setSelectedOption],
+    useSelectedOption,
     propsOptions: [
-      { id: 'approve', value: true },
-      { id: 'disapprove', value: false },
+      { id: `approve${index}`, value: true },
+      { id: `disapprove${index}`, value: false },
     ],
     className: 'ballot-box__options',
   };
@@ -37,6 +37,7 @@ export const BallotBox = (props) => {
   const propsVote = {
     type: 'submit',
     className: 'button-action',
+    disabled: selectedOption === undefined,
   };
 
   return (
@@ -52,6 +53,13 @@ export const BallotBox = (props) => {
 
 BallotBox.prototype = {
   characterId: PropTypes.string,
+  index: PropTypes.number,
+  useSelectedOption: PropTypes.arrayOf(
+    PropTypes.shape({
+      selectedOption: PropTypes.bool,
+      setSelectedOption: PropTypes.func,
+    })
+  ),
 };
 
 BallotBox.defaultProps = {

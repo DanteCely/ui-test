@@ -33,18 +33,25 @@ const modifyVote = (revert, add, characterId) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const votes = checkVotes();
+      let doVote;
 
-      const voteIndex = votes.findIndex(({ id }) => id === characterId);
+      const index = votes.findIndex(({ id }) => id === characterId);
 
-      votes[voteIndex].voted = true;
-      votes[voteIndex].lastUpdated = new Date().toISOString();
+      votes[index].voted = true;
+      votes[index].lastUpdated = new Date().toISOString();
 
-      const doVote = revert ? -1 : 1;
+      if (revert) {
+        votes[index].voted = false;
+        doVote = -1;
+      } else {
+        votes[index].voted = true;
+        doVote = 1;
+      }
 
       if (add) {
-        votes[voteIndex].positive += doVote;
+        votes[index].positive += doVote;
       } else {
-        votes[voteIndex].negative += doVote;
+        votes[index].negative += doVote;
       }
 
       localStorage.setItem('votes', JSON.stringify(votes));

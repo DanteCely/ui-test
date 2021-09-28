@@ -3,7 +3,7 @@ import i18n from '@i18n';
 
 import { Typography, Button } from '@components/atoms';
 import { Dropdown } from '@components/molecules';
-import { CharactersAndVotes } from '@components/templates';
+import { CharactersGroup } from '@components/templates';
 
 import PreviousRulingProvider from './PreviousRulingContext';
 
@@ -18,27 +18,30 @@ const App = () => {
     { itemName: DROPDOWN_MENU__ITEM_GRID_VIEW, ariaLabel: DROPDOWN_MENU__ITEM_GRID_VIEW },
   ];
 
-  const [title, setTitle] = useState(propsDropdownItems[0].itemName);
+  const [viewType, setViewType] = useState(propsDropdownItems[0].itemName);
 
-  const propsDorpdown = {
-    title,
+  const propsDropdown = {
+    title: viewType,
     id: 'dropdownMenuView',
   };
 
   const handlerView = (itemName) => {
-    setTitle(itemName);
-    console.log('Change the view', itemName);
+    setViewType(itemName);
   };
 
   const renderDropdownItems = () => {
-    return propsDropdownItems.map((props) => {
+    return propsDropdownItems.map((props, index) => {
       const { itemName, ...rest } = props;
       const propsDropdownTitle = {
         onClick: () => handlerView(itemName),
         ...rest,
       };
 
-      return <Button {...propsDropdownTitle}>{itemName}</Button>;
+      return (
+        <Button key={index} {...propsDropdownTitle}>
+          {itemName}
+        </Button>
+      );
     });
   };
 
@@ -51,9 +54,9 @@ const App = () => {
     <PreviousRulingProvider>
       <header className='previous-ruling__header'>
         <Typography {...propsTitle}>{i18n('PREVIOUS_RULING__TITLE')}</Typography>
-        <Dropdown {...propsDorpdown}>{renderDropdownItems()}</Dropdown>
+        <Dropdown {...propsDropdown}>{renderDropdownItems()}</Dropdown>
       </header>
-      <CharactersAndVotes />
+      <CharactersGroup viewType={viewType} />
     </PreviousRulingProvider>
   );
 };
