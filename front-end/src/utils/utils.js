@@ -1,3 +1,6 @@
+import moment from 'moment';
+import _ from 'lodash';
+
 // Took from https://www.delftstack.com/es/howto/javascript/javascript-round-to-2-decimal-places/
 function round(num) {
   const m = Number((Math.abs(num) * 100).toPrecision(15));
@@ -19,4 +22,8 @@ export const convertToCharPercent = (numberPercent) => {
 
 export const greaterThan = (positive, negative) => {
   return positive >= negative;
+};
+
+export const getDiffDateDescription = (date, job) => {
+  return `${moment(date).fromNow()} in ${_.upperFirst(job)}`;
 };

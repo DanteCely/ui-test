@@ -5,5 +5,6 @@
   "DROPDOWN_MENU__ITEM_GRID_VIEW": "Grid",
   "VOTE_CARD__DESCRIPTION": "Voting card to view character's voting status",
   "VOTE_CARD__VOTE_AGAIN": "Vote Again",
-  "CHARACTERD_VOTES__DESCRIPTION": "Character list where you can vote by one"
+  "CHARACTERD_VOTES__DESCRIPTION": "Character list where you can vote by one",
+  "CARD_INFO__THANKS": "Thans for your vote!"
 }

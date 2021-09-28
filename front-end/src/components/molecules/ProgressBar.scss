@@ -21,7 +21,7 @@
 
 .progress-bar {
   display: flex;
-  height: 54px;
+  height: 3.1rem;
   &__left-side {
     background-color: $background-positive;
     @include bar-label;

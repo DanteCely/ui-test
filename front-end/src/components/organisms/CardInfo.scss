@@ -5,6 +5,7 @@
 .card-info {
   color: $white;
   margin: 0;
+  margin-bottom: 1.125rem;
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0.0001) 0%,
@@ -34,7 +35,7 @@
       }
 
       &:nth-child(2) {
-        width: 33.75rem;
+        width: 26.75rem;
       }
     }
   }
@@ -46,9 +47,31 @@
   }
   &__description {
     font-size: $size-medium;
-    word-break: break-all;
+    word-break: word-break;
     line-height: 22px;
+    height: 2.8rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   &__last-work-comment {
+    font-weight: bold;
+    font-size: $size-normal;
+    line-height: 18px;
+    text-align: right;
+  }
+
+  &__rigth-side {
+    width: 330px;
+    > p {
+      padding: 8px 14px 0 43px;
+    }
+  }
+
+  &__vote-side {
+    display: flex;
+    justify-content: flex-end;
+    padding: 19px 14px 17px 43px;
+    width: 273px;
   }
 }

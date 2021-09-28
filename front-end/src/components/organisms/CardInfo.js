@@ -6,7 +6,7 @@ import { ProgressBar } from '@components/molecules';
 import { VoteSide } from '@components/organisms';
 
 import { PreviousRulingContext } from '../../PreviousRulingContext';
-import { greaterThan } from '@utils';
+import { greaterThan, getDiffDateDescription } from '@utils';
 import i18n from '@i18n';
 
 import './CardInfo.scss';
@@ -15,7 +15,8 @@ const thumbsValue = [true, false];
 
 export const CardInfo = (props) => {
   const { character, vote, index } = props;
-  const { positive, negative, voted, id: characterId } = vote;
+  const { name, description, category, picture, lastActivityDate } = character;
+  const { positive, negative, voted: hasVoted, id: characterId } = vote;
 
   const isUp = useMemo(() => greaterThan(positive, negative), [positive, negative]);
 
@@ -38,8 +39,9 @@ export const CardInfo = (props) => {
   };
 
   const propsVoteSide = {
+    className: 'card-info__vote-side',
     characterId,
-    voted,
+    voted: hasVoted,
     index,
   };
 
@@ -53,11 +55,14 @@ export const CardInfo = (props) => {
             </span>
           </div>
           <div>
-            <Typography {...propsName}>{'Name'}</Typography>
-            <Typography {...propsDescription}>{'Description'}</Typography>
+            <Typography {...propsName}>{name}</Typography> {/*      */}
+            <Typography {...propsDescription}>{description}</Typography>
           </div>
-          <div>
-            <Typography {...propsLatestWorkComment}>{'latestWorkComment'}</Typography>
+          <div className={'card-info__rigth-side'}>
+            {hasVoted && <Typography {...propsLatestWorkComment}>{i18n('CARD_INFO__THANKS')}</Typography>} {/*  */}
+            {!hasVoted && (
+              <Typography {...propsLatestWorkComment}>{getDiffDateDescription(lastActivityDate, category)}</Typography>
+            )}
             <VoteSide {...propsVoteSide} />
           </div>
         </div>
