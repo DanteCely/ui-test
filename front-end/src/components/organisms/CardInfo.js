@@ -45,9 +45,16 @@ export const CardInfo = (props) => {
     index,
   };
 
+  const styles = {
+    backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0) 11%, rgb(136, 136, 136) 20%, rgb(102, 102, 102) 80%), url(/img/${picture})`,
+    backgroundRepeat: `no-repeat`,
+    backgroundSize: `auto,12.5rem`,
+    backgroundPosition: `0 0,0 -1rem`,
+  };
+
   return (
     <>
-      <div aria-describedby='voteSide' className={'card-info'} {...props}>
+      <div aria-describedby='voteSide' className={'card-info'} style={styles}>
         <div className={'card-info__content'}>
           <div>
             <span className={`card-info__thumb-img card-info__thumb-img--${isUp ? 'up' : 'down'}`}>
